@@ -16,12 +16,6 @@ abstract class WP_Tests_Image_Resize_UnitTestCase extends WP_Image_UnitTestCase 
 		add_filter( 'wp_image_editors', array( $this, 'wp_image_editors' ) );
 	}
 
-	public function tearDown() {
-		remove_filter( 'wp_image_editors', array( $this, 'wp_image_editors' ) );
-
-		parent::tearDown();
-	}
-
 	public function wp_image_editors() {
 		return array( $this->editor_engine );
 	}
@@ -42,7 +36,7 @@ abstract class WP_Tests_Image_Resize_UnitTestCase extends WP_Image_UnitTestCase 
 		$image = $this->resize_helper( DIR_TESTDATA . '/images/test-image.png', 25, 25 );
 
 		if ( ! is_string( $image ) ) {  // WP_Error, stop GLib-GObject-CRITICAL assertion.
-			$this->fail( sprintf( 'No PNG support in the editor engine %s on this system', $this->editor_engine ) );
+			$this->fail( sprintf( 'No PNG support in the editor engine %s on this system.', $this->editor_engine ) );
 		}
 
 		$this->assertSame( 'test-image-25x25.png', wp_basename( $image ) );
@@ -58,7 +52,7 @@ abstract class WP_Tests_Image_Resize_UnitTestCase extends WP_Image_UnitTestCase 
 		$image = $this->resize_helper( DIR_TESTDATA . '/images/test-image.gif', 25, 25 );
 
 		if ( ! is_string( $image ) ) {  // WP_Error, stop GLib-GObject-CRITICAL assertion.
-			$this->fail( sprintf( 'No GIF support in the editor engine %s on this system', $this->editor_engine ) );
+			$this->fail( sprintf( 'No GIF support in the editor engine %s on this system.', $this->editor_engine ) );
 		}
 
 		$this->assertSame( 'test-image-25x25.gif', wp_basename( $image ) );

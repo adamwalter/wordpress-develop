@@ -5,7 +5,7 @@
  * @group adminScreen
  */
 class Tests_Admin_includesScreen extends WP_UnitTestCase {
-	var $core_screens = array(
+	public $core_screens = array(
 		'index.php'                            => array(
 			'base'            => 'dashboard',
 			'id'              => 'dashboard',
@@ -156,8 +156,8 @@ class Tests_Admin_includesScreen extends WP_UnitTestCase {
 	);
 
 	function setUp() {
-		set_current_screen( 'front' );
 		parent::setUp();
+		set_current_screen( 'front' );
 	}
 
 	function tearDown() {

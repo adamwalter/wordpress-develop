@@ -4,8 +4,8 @@
  * @group xmlrpc
  */
 class Tests_XMLRPC_wp_getPostType extends WP_XMLRPC_UnitTestCase {
-	var $cpt_name;
-	var $cpt_args;
+	public $cpt_name;
+	public $cpt_args;
 
 	function setUp() {
 		parent::setUp();
@@ -21,12 +21,6 @@ class Tests_XMLRPC_wp_getPostType extends WP_XMLRPC_UnitTestCase {
 			'hierarchical'  => true,
 		);
 		register_post_type( $this->cpt_name, $this->cpt_args );
-	}
-
-	function tearDown() {
-		_unregister_post_type( $this->cpt_name );
-
-		parent::tearDown();
 	}
 
 	function test_invalid_username_password() {

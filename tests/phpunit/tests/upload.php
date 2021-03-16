@@ -5,11 +5,11 @@
  */
 class Tests_Upload extends WP_UnitTestCase {
 
-	var $siteurl;
+	public $siteurl;
 
 	function setUp() {
-		$this->_reset_options();
 		parent::setUp();
+		$this->_reset_options();
 	}
 
 	function _reset_options() {
